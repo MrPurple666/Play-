@@ -172,6 +172,7 @@ void CPS2VM::ReloadFrameRateLimit()
 		frameRate = m_ee->m_gs->GetCrtFrameRate();
 	}
 	bool limitFrameRate = CAppConfig::GetInstance().GetPreferenceBoolean(PREF_PS2_LIMIT_FRAMERATE);
+	limitFrameRate = false;
 	m_frameLimiter.SetFrameRate(limitFrameRate ? frameRate : 0);
 
 	uint32 frameTicks = PS2::EE_CLOCK_FREQ / frameRate;
