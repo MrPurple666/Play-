@@ -228,6 +228,11 @@ void CSubSystem::Reset()
 int CSubSystem::ExecuteCpu(int quota)
 {
 	m_isIdle = false;
+	if ((m_EE.m_State.nPC == 0x002E1480) || (m_EE.m_State.nPC == 0x00115838))
+	{
+		quota = quota / 16;
+		m_isIdle = true;
+	}
 	int executed = 0;
 	if(m_EE.m_State.callMsEnabled)
 	{
